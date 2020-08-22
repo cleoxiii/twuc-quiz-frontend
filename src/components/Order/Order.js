@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 
-class Mall extends Component {
+class Order extends Component {
   render() {
     return (
       <div>
-        商城页面暂无数据
+        订单页面暂无数据
       </div>
     );
   }
 }
 
-export default Mall;
+export default Order;
