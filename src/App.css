@@ -16,10 +16,11 @@
 
 a {
   text-decoration: none;
-  color: white;
+  color: #95a0a3;
   padding: 29px;
 }
 
 a:focus {
   background-color: #1690ff;
+    color: white;
 }
