@@ -6,21 +6,24 @@
   text-align: left;
 }
 
-img {
+.single-product img {
   width: 100%;
   height: 200px;
   margin-top: 20px;
 }
 
-h4, p {
+.single-product h4 {
   margin: 15px 0 0 25px;
+  font-weight: bolder;
+  font-size: 17px;
 }
 
-p {
+.single-product p {
+  margin: 15px 0 0 25px;
   color: #95a0a3;
 }
 
-button {
+.single-product button {
   width: 40px;
   height: 40px;
   margin: 0 20px 20px 75%;

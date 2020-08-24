@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Table, Button} from 'antd';
-import 'antd/dist/antd.css';
 import './Order.css';
 
 class Order extends Component {
@@ -60,7 +59,7 @@ class Order extends Component {
       {
         title: '操作',
         key: 'action',
-        render: () => <Button>删 除</Button>
+        render: () => <Button danger>删 除</Button>
       },
     ];
 
