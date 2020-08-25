@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Table, Button} from 'antd';
+import {Table, Button, notification} from 'antd';
 import './Order.css';
 
 class Order extends Component {
@@ -21,6 +21,7 @@ class Order extends Component {
       .then(() => this.setState({data: this.state.orders.map(item => {
           let currentProduct = this.state.products.find(product => product.id === item.productId);
           return {
+            id: item.id,
             name: currentProduct.name,
             price: currentProduct.price,
             count: item.count,
@@ -28,6 +29,30 @@ class Order extends Component {
           }
         })}))
       .catch(error => console.error(error))
+  }
+
+  openNotificationWithIcon(type) {
+    notification[type]({
+      message: 'Error',
+      description:
+        '订单删除失败，请稍后再试',
+    });
+  }
+
+  handleDelete(id) {
+    const req = new Request(`/order/${id}`, {
+      method: 'DELETE'
+    })
+    fetch(req)
+      .then((response) => {
+        if(!response.ok) {
+          throw new Error();
+        }
+        this.getOrders()
+      })
+      .catch(() => {
+        this.openNotificationWithIcon('error');
+      });
   }
 
   componentDidMount() {
@@ -59,7 +84,9 @@ class Order extends Component {
       {
         title: '操作',
         key: 'action',
-        render: () => <Button danger>删 除</Button>
+        render: (text, record) => (
+          <Button danger onClick={() => this.handleDelete(record.id)}>删 除</Button>
+        )
       },
     ];
 
